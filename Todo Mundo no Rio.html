@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katy Perry no Rio 2026: O movimento dos fãs para trazer a nova era solar para o Brasil.">
+    <title>KP Rio 2026 | Solar Era</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+
+    <style>
+    
+        :root {
+            --ocean-blue: #0f4c75;  
+            --sky-blue: #3282b8; 
+            --sand-yellow: #ffe066;
+            --concrete: #f0f2f5; 
+            --slate: #2c3e50;    
+            --white: #ffffff;
+            --font-display: 'Playfair Display', serif; 
+            --font-body: 'Inter', sans-serif;     
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--concrete);
+            color: var(--slate);
+            font-family: var(--font-body);
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; display: block; border-radius: 8px; }
+
+
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo { 
+            font-family: var(--font-display); 
+            font-weight: 600; 
+            font-size: 1.4rem; 
+            color: var(--ocean-blue); 
+        }
+        .logo span { color: #fbc531; font-style: italic; }
+
+        .nav-links { display: flex; gap: 2rem; font-weight: 500; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--sky-blue); }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, #dbe9f4, var(--concrete));
+            padding: 0 1rem;
+            position: relative;
+        
+        }
+
+        .hero-content { max-width: 800px; z-index: 2; }
+        
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--ocean-blue);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #57606f;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-solar {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--ocean-blue);
+            color: var(--white);
+            border-radius: 4px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 20px rgba(15, 76, 117, 0.2);
+        }
+        .btn-solar:hover { 
+            background-color: var(--sky-blue); 
+            transform: translateY(-2px);
+        }
+
+        .story-section { padding: 6rem 10%; background: var(--white); }
+        
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-family: var(--font-display); font-size: 2.5rem; color: var(--ocean-blue); }
+        .section-header span { display: block; width: 60px; height: 3px; background: var(--sand-yellow); margin: 10px auto; }
+
+        .tabs-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding-bottom: 1rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+            color: #95a5a6;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        .tab-btn.active { color: var(--ocean-blue); }
+        .tab-btn.active::after {
+            content: '';
+            position: absolute; bottom: -1px; left: 0; width: 100%; height: 3px;
+            background: var(--sand-yellow);
+        }
+
+        .content-box {
+            display: none;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeUp 0.6s ease;
+        }
+        .content-box.active { display: block; }
+        
+        .content-box h3 { margin-bottom: 1rem; color: var(--sky-blue); }
+        .content-box p { margin-bottom: 1rem; font-size: 1.05rem; color: #444; }
+
+        .visuals-section { padding: 6rem 5%; background: var(--concrete); }
+        
+        .grid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .polaroid {
+            background: var(--white);
+            padding: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover { transform: translateY(-5px); }
+        .polaroid img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(20%); transition: 0.4s; }
+        .polaroid:hover img { filter: grayscale(0%); }
+        .caption { padding-top: 1rem; font-weight: 600; color: var(--ocean-blue); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .countdown-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: var(--ocean-blue);
+            color: var(--white);
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .time-unit span {
+            display: block;
+            font-size: 3.5rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--sand-yellow);
+            line-height: 1;
+        }
+        .time-unit label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+
+        footer {
+            background: #1a2633;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 3rem;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .timer-display { gap: 1rem; }
+            .time-unit span { font-size: 2rem; }
+            .tabs-wrapper { gap: 1rem; overflow-x: auto; white-space: nowrap; justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">RIO<span>26</span></div>
+        <div class="nav-links">
+            <a href="#inicio">Manifesto</a>
+            <a href="#teorias">Teorias</a>
+            <a href="#vibe">A Vibe</a>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>O Rio vai tremer<br>Novamente.</h1>
+            <p>Não é só um show. É a redenção. Katy Perry. Copacabana 2026. A gente tá pronto para reescrever a história?</p>
+            <a href="#teorias" class="btn-solar">Saiba mais</a>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="teorias" class="story-section">
+            <div class="section-header">
+                <h2>O que esperar de Katy no Rio em 2026?</h2>
+                <span></span>
+                <p>O que a gente sabe (e o que a gente sonha).</p>
+            </div>
+
+            <div class="tabs-wrapper">
+                <button class="tab-btn active" data-target="tab1">01. O Sinal</button>
+                <button class="tab-btn" data-target="tab2">02. A Estética</button>
+                <button class="tab-btn" data-target="tab3">03. O Palco</button>
+            </div>
+
+            <div id="tab1" class="content-box active">
+                <p>O término com Orlando Bloom pegou a gente de surpresa, mas o que veio depois foi ainda mais chocante: a honestidade brutal. Esqueça as perucas e o látex. A nova era começou quando ela lançou 'bandaids'. 
+                    A faixa não tenta ser um hit de rádio; é uma conversa de travesseiro. Quando ela canta sobre 'parar de colocar curativos em fraturas expostas', ela define o tom de 2026. Essa 'Era Solar' que estamos vendo nascer não é sobre felicidade forçada, é sobre a luz que entra pelas rachaduras.
+                    O Rio de Janeiro não vai receber a California Girl intocável. Vai receber uma mulher real, solteira e em processo de cura, transformando dor em arte sob o nosso sol de 40 graus. É a vulnerabilidade como superpoder."</p>
+                <p>Os insiders já confirmaram: as negociações com a prefeitura começaram em segredo. A ideia? Fazer algo maior que a Lady Gaga em 2025.</p>
+            </div>
+
+            <div id="tab2" class="content-box">
+                <p>Katy Perry renasce com uma vulnerabilidade poderosa ao trazer “Bandaids” — seu primeiro single depois do término com Orlando Bloom — como um desabafo honesto sobre o fim de um ciclo e a dor de um coração partido. 
+                    A estética desse novo capítulo é crua e emocional: ela não tem medo de mostrar feridas físicas e emocionais e transmite a força da superação, mesmo quando vem acompanhada de cicatrizes. 
+                    A letra fala de tentativas, de desilusões e de aceitar que algumas coisas não merecem ser remendadas com “curativos” improvisados. 
+                    Mas, ao mesmo tempo, há uma aceitação calma e madura de que, mesmo doendo, aquele amor — e tudo que viveram juntos — “valeu a pena no final”.</p>
+                <p>Katy quer provar que amadureceu, e o Rio é o cenário perfeito para essa "Golden Hour" da carreira dela. </p>
+            </div>
+
+            <div id="tab3" class="content-box">
+                <h3>Um Palco Flutuante?</h3>
+                <p>A planta do projeto vazou num fórum gringo. Parece loucura, mas o palco principal não estaria na areia... estaria na água. Uma estrutura semi-flutuante conectada por passarelas de acrílico transparente.</p>
+                <p>Imagina cantar "Walking on Air" literalmente andando sobre o mar? É a cara dela fazer isso.</p>
+            </div>
+        </section>
+
+        <section id="vibe" class="visuals-section">
+            <div class="section-header">
+                <h2>Moodboard do Evento</h2>
+                <p style="color: #666;">Se fechar os olhos, dá pra imaginar assim:</p>
+            </div>
+            
+            <div class="grid-gallery">
+                <div class="polaroid">
+                    <img src="CAP1.jpg" alt="Mar do Rio de cima">
+                    <div class="caption">A vibe da Cidade Maravilhosa</div>
+                </div>
+                <div class="polaroid">
+                    <img src="CAP2.jpg" alt="Palco clean">
+                    <div class="caption">Conceito Maximalista</div>
+                </div>
+                <div class="polaroid">
+                    <img src="KATY.jpg" alt="Festa de dia">
+                    <div class="caption">Nightime Festival Vibe</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="countdown-section">
+            <h2>Contagem Regressiva </h2>
+            <p style="opacity: 0.8;">Até o primeiro final de semana de maio de 2026.</p>
+            
+            <div class="timer-display">
+                <div class="time-unit"><span id="days">00</span><label>Dias</label></div>
+                <div class="time-unit"><span id="hours">00</span><label>Horas</label></div>
+                <div class="time-unit"><span id="min">00</span><label>Min</label></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Feito e desenvolvido por Acauan Brayan</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #555;">Progeto Final de Front-end | All rights reserved.</p>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = document.querySelectorAll('.content-box');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+    
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                const target = document.getElementById(tab.dataset.target);
+                target.classList.add('active');
+            });
+        });
+
+        const targetDate = new Date("May 2, 2026 00:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("min").innerText = minutes;
+        }, 1000);
+    </script>
+</body>
+</html>
